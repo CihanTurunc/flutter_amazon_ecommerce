@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amazon_ecommerce/constants/global_variables.dart';
+import 'package:flutter_amazon_ecommerce/router.dart';
+
+import 'features/auth/screens/auth_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,14 +19,19 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Amazon Ecommerce',
       theme: ThemeData(
         scaffoldBackgroundColor: GlobalVariables.backgroundColor,
+        colorScheme: const ColorScheme.light(
+          primary: GlobalVariables.secondaryColor,
+        ),
+        appBarTheme: const AppBarTheme(
+          elevation: 0,
+          iconTheme: IconThemeData(
+            color: Colors.black,
+          ),
+        ),
         primarySwatch: Colors.blue,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("Hello"),
-        ),
-        body: const Center(child: Text("Flutter Demo HomePage")),
-      ),
+      onGenerateRoute: (settings) => generateRoute(settings),
+      home: const AuthScreen(),
     );
   }
 }
